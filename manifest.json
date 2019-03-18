@@ -6,5 +6,13 @@
   "browser_action": {
     "default_popup": "popup.html"
   },
-  "optional_permissions": [ "tabs", "https://blog.naver.com/*/postwrite" ]
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://blog.naver.com/*/postwrite"],
+      "js": ["extension.js"]
+    }
+  ]
 }
