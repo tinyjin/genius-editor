@@ -12,7 +12,8 @@
   "content_scripts": [
     {
       "matches": ["*://blog.naver.com/*/postwrite"],
-      "js": ["extension.js"]
+      "js": ["contentscript.js"]
     }
-  ]
+  ],
+  "web_accessible_resources": ["extension.js"]
 }
