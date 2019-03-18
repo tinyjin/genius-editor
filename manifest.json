@@ -1,0 +1,10 @@
+{
+  "name": "Genius Editor",
+  "version": "1.0.0",
+  "description": "upgrade smart editor",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "optional_permissions": [ "tabs", "https://blog.naver.com/*/postwrite" ]
+}
