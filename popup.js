@@ -11,7 +11,7 @@ window.onload = () => {
     const { isOn } = result;
 
     switchInput.checked = isOn || false;
-    console('Value currently is ' + isOn);
+    console.log('Value currently is ' + isOn);
   });
 };
 
@@ -19,6 +19,6 @@ switchInput.onclick = function (event) {
   const changeStatus = event.target.checked;
 
   chrome.storage.sync.set({isOn: changeStatus}, () => {
-    console('Value is set to ' + changeStatus);
+    console.log('Value is set to ' + changeStatus);
   });
 };
