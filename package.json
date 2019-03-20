@@ -1,0 +1,27 @@
+{
+  "name": "genius-editor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "contentscript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinyjin/genius-editor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tinyjin/genius-editor/issues"
+  },
+  "homepage": "https://github.com/tinyjin/genius-editor#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "babel-preset-minify": "^0.5.0",
+    "uglify-js": "^3.5.0"
+  }
+}
