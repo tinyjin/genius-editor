@@ -47,6 +47,7 @@ const makeFile = (extensionCode, darkModeCode, popupCode, contentScriptCode) => 
   fs.writeFileSync(path.join(__dirname, 'dist', 'contentscript.js'), contentScriptCode, 'utf8');
 
   // 기타 파일 복사
+  fs.copyFileSync(path.join(__dirname, 'assets','icon-128.png'), path.join(__dirname, 'dist', 'icon-128.png'));
   fs.copyFileSync(path.join(__dirname, 'manifest.json'), path.join(__dirname, 'dist', 'manifest.json'));
   fs.copyFileSync(path.join(__dirname, 'popup.html'), path.join(__dirname, 'dist', 'popup.html'));
 };

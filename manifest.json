@@ -23,5 +23,8 @@
   "web_accessible_resources": [
     "extension.js",
     "darkMode.js"
-  ]
+  ],
+  "icons": {
+    "128": "icon-128.png"
+  }
 }
