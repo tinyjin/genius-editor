@@ -2,6 +2,23 @@ const fs = require('fs');
 const path = require('path');
 const babel = require('@babel/core');
 
+// 유틸리티 - 재귀적 디렉터리 제거
+const deleteDirRecursive = (targetPath) => {
+  if (fs.existsSync(targetPath)) {
+    fs.readdirSync(targetPath).forEach((file, index) => {
+      const curPath = path.join(targetPath, file);
+
+      if (fs.lstatSync(curPath).isDirectory()) { // recurse
+        deleteDirRecursive(curPath);
+      } else { // delete file
+        fs.unlinkSync(curPath);
+      }
+    });
+
+    fs.rmdirSync(targetPath);
+  }
+};
+
 const build = () => {
   const { code : extensionCode } = runBabel('extension.js');
   const { code : popupCode } = runBabel('popup.js');
@@ -11,8 +28,12 @@ const build = () => {
 };
 
 const makeFile = (extensionCode, popupCode, contentScriptCode) => {
-  // 디렉터리 재생성
-  // fs.rmdirSync(path.join(__dirname, 'dist'));
+  // 기존 디렉터리 삭제
+  if (fs.existsSync(path.join(__dirname, 'dist'))) {
+    deleteDirRecursive(path.join(__dirname, 'dist'));
+  }
+
+  // dist 디렉터리 생성
   fs.mkdirSync(path.join(__dirname, 'dist'));
 
   // extension.js 빌드
@@ -30,7 +51,6 @@ const makeFile = (extensionCode, popupCode, contentScriptCode) => {
 const runBabel = (file) => {
   return babel.transformFileSync(file);
 };
-
 
 
 build();
