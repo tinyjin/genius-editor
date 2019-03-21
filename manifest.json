@@ -12,7 +12,11 @@
   ],
   "content_scripts": [
     {
-      "matches": ["*://blog.naver.com/*/postwrite"],
+      "matches": [
+        "*://blog.naver.com/*",
+        "*://*.blog.me/*"
+      ],
+      "all_frames": true,
       "js": ["contentscript.js"]
     }
   ],
