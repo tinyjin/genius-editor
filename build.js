@@ -21,13 +21,14 @@ const deleteDirRecursive = (targetPath) => {
 
 const build = () => {
   const { code : extensionCode } = runBabel('extension.js');
+  const { code : darkModeCode } = runBabel('darkMode.js');
   const { code : popupCode } = runBabel('popup.js');
   const { code : contentScriptCode } = runBabel('contentscript.js');
 
-  makeFile(extensionCode, popupCode, contentScriptCode);
+  makeFile(extensionCode, darkModeCode, popupCode, contentScriptCode);
 };
 
-const makeFile = (extensionCode, popupCode, contentScriptCode) => {
+const makeFile = (extensionCode, darkModeCode, popupCode, contentScriptCode) => {
   // 기존 디렉터리 삭제
   if (fs.existsSync(path.join(__dirname, 'dist'))) {
     deleteDirRecursive(path.join(__dirname, 'dist'));
@@ -38,6 +39,8 @@ const makeFile = (extensionCode, popupCode, contentScriptCode) => {
 
   // extension.js 빌드
   fs.writeFileSync(path.join(__dirname, 'dist', 'extension.js'), extensionCode, 'utf8');
+  // darkMode.js 빌드
+  fs.writeFileSync(path.join(__dirname, 'dist', 'darkMode.js'), darkModeCode, 'utf8');
   // popup.js 빌드
   fs.writeFileSync(path.join(__dirname, 'dist', 'popup.js'), popupCode, 'utf8');
   // contentscript.js 빌드

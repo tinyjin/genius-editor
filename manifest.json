@@ -16,5 +16,8 @@
       "js": ["contentscript.js"]
     }
   ],
-  "web_accessible_resources": ["extension.js"]
+  "web_accessible_resources": [
+    "extension.js",
+    "darkMode.js"
+  ]
 }
