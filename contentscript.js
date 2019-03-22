@@ -1,5 +1,13 @@
 chrome.storage.sync.get(['isOn'], function (result) {
-  const { isOn } = result;
+  let { isOn } = result;
+
+  // 최초 설치시 자동으로 Genius Editor로 설정
+  if (isOn !== true && isOn !== false) {
+    isOn = true;
+    chrome.storage.sync.set({isOn: isOn}, () => {
+      console.log('Value is set to ' + isOn);
+    });
+  }
 
   if (isOn) {
     runContentScript();
