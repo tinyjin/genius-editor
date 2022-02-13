@@ -1,24 +1,28 @@
+const mainFrame = document.querySelector('#mainFrame');
+const mainDocument = mainFrame.contentWindow.document;
+
 const setBackgroundColorToDark = (selector) => {
-  document.querySelector(selector).style.background = '#333';
+  mainDocument.querySelector(selector).style.background = '#333';
 };
 
 const setBackgroundColorToWhite = (selector) => {
-  document.querySelector(selector).style.background = '#white';
+  mainDocument.querySelector(selector).style.background = '#white';
 };
 
 const setTextColorToWhite = (selector) => {
-  document.querySelectorAll(selector).forEach((element) => {
+  mainDocument.querySelectorAll(selector).forEach((element) => {
     element.style.color = 'white';
   });
 };
 
 const setBackgroundColorToStrongDark = (selector) => {
-  document.querySelector(selector).style.background = "#232222";
+  mainDocument.querySelector(selector).style.background = "#232222";
 };
 
 // contents line과 같이 다이나믹하게 추가되는 요소에는 아래의 함수 적용
 const setContentLineColorToWhite = () => {
-  document.querySelectorAll('p.se-text-paragraph > span').forEach((line, i) => {
+  console.log('변경');
+  mainDocument.querySelectorAll('.se-components-wrap p.se-text-paragraph > span').forEach((line, i) => {
     line.style.color = 'white';
   });
 };
@@ -28,27 +32,29 @@ const setDarkMode = () => {
   setBackgroundColorToDark('.se-content-guide');
 
   // 헤더
-  setBackgroundColorToDark('#header');
+  setBackgroundColorToDark('.se-header');
 
   setBackgroundColorToDark('.se-toolbar.se-document-toolbar');
   setBackgroundColorToDark('.se-toolbar.se-property-toolbar');
   setBackgroundColorToDark('.se-toolbar.se-property-toolbar');
+  
+  setBackgroundColorToDark('#root > div > div');
 
   // 배경
   setBackgroundColorToStrongDark('.se-canvas');
 
   // 저장 버튼
-  setBackgroundColorToStrongDark('.btn_save');
-  setBackgroundColorToStrongDark('.btn_save_count');
-  setTextColorToWhite('.btn_save > span');
+  // setBackgroundColorToStrongDark('.btn_save');
+  // setBackgroundColorToStrongDark('.btn_save_count');
+  // setTextColorToWhite('.btn_save > span');
 
   // 커서
-  document.querySelectorAll('.se-caret').forEach((element) => {
+  mainDocument.querySelectorAll('.se-caret').forEach((element) => {
     element.style.borderLeft = '1px solid white';
   });
 
   // 다이나믹 요소에 White 컬러 적용
-  document.addEventListener('DOMSubtreeModified', setContentLineColorToWhite);
+  mainDocument.addEventListener('DOMSubtreeModified', setContentLineColorToWhite);
 };
 
 

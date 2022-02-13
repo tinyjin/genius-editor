@@ -26,8 +26,8 @@ const runLoader = () => {
   blackBoard.className = 'blackBoard';
   blackBoard.style.backgroundColor = 'black';
   blackBoard.style.opacity = 0.5;
-  blackBoard.style.width = '100vh';
-  blackBoard.style.height = '100vh';
+  blackBoard.style.width = '100%';
+  blackBoard.style.height = '100%';
   blackBoard.style.position = 'absolute';
   blackBoard.style.top = 0;
   blackBoard.style.left = 0;
